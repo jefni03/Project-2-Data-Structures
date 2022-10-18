@@ -13,7 +13,7 @@ public class Calculator{
 
 	/**
 	 * Converts an infix expression to a postfix expression using a LinkedStack.
-	 * Only takes in variables a-e
+	 * Only takes in variables as operands
 	 * @param infix infix expression
 	 * @return postfix expression
 	 */
@@ -63,7 +63,7 @@ public class Calculator{
 						}
 						stack.pop();									//a final pop to remove '(' from the stack
 						break;
-					default:											//skips any entries in infix that isn't an operator or an operand (a letter)
+					default:											//skips any entries in infix that isn't an operator or an operand
 						break;
 				}
 			}
@@ -109,6 +109,7 @@ public class Calculator{
 
 	/**
 	 * Calculates an answer from a postfix expression, given that it only takes in variables a-e,
+	 * or else it will through an IllegalArgumentException when calling convertCharToValue
 	 * @param postfix postfix expression you want to calculate
 	 * @return the final calculation of postfix
 	 */
@@ -152,6 +153,7 @@ public class Calculator{
 
 	/**
 	 * Converts some variable of a-e its corresponding double value.
+	 * Throws IllegalArgumentException if the variable isn't a-e.
 	 * @param entry a variable that is from a to e only
 	 * @return the value that variable represents
 	 */
