@@ -30,9 +30,9 @@
 ###
 ###
 ## _JavaDocs_
-### Calculator.html
-### LinkedStack.html
-### ResizeableArrayStack.html
+### https://github.com/Krazy-Koders/Project-2/tree/main/Calculator%20Javadoc
+### https://github.com/Krazy-Koders/Project-2/tree/main/LinkedStack%20Javadoc
+### https://github.com/Krazy-Koders/Project-2/tree/main/ResizeableArrayStack%20Javadoc
 ##
 ## _Member Contributions_
 ### Jeffrey: ResizeableArrayStack
