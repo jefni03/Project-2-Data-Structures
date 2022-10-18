@@ -21,7 +21,7 @@ public class Calculator{
 			if (Character.isLetter(infixArray[i])){								//if it is operand, then just add to postfix
 				postfix = postfix + infixArray[i];
 			}
-			else{
+			else{																//if it is operator
 				switch (infixArray[i]){
 					case '^':														//separate from other operators because priority of '^' is from right to left 
 						stack.push(infixArray[i]);									//and b/c infix read from left to right
@@ -33,10 +33,10 @@ public class Calculator{
 						else{														//makes sure that the infix operator only pops to stack if its priority is higher than
 							int infixPriority = getPriority(infixArray[i]);			//the priority of the operator(s) already in the stack
 							int stackPriority = getPriority(stack.peek());			//if it isn't, then need to pop stack until no more priority conflict, or until stack is empty
-							while(infixPriority <= stackPriority){
+							while(infixPriority <= stackPriority){					// is < instead of <= b/c accounts for priority from left to right of infix
 								postfix = postfix + stack.peek();
 								stack.pop();
-								if(stack.isEmpty()){
+								if(stack.isEmpty()){								//used to avoid EmptyStackException when calling stack.peek() later
 									break;
 								}
 								stackPriority = getPriority(stack.peek());
