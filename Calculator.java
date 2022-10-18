@@ -110,12 +110,12 @@ public class Calculator{
 		ResizeableArrayStack<Double> stack = new ResizeableArrayStack<>();
 		char[] postfixArray = postfix.toCharArray();
 		for(int i=0; i<postfixArray.length; i++){
-			if(Character.isLetter(postfixArray[i])){
+			if(Character.isLetter(postfixArray[i])){						//if is operand just push it to the stack
 				stack.push(convertCharToValue(postfixArray[i]));
 			}
-			else{
-				double rightOperand = stack.pop();
-				double leftOperand = stack.pop();
+			else{															//if is an operator, pop two operands from the stack
+				double rightOperand = stack.pop();							//and calculate the mini expression accordingly
+				double leftOperand = stack.pop();							//then push that final calculation to the stack
 				double result = 0;
 				switch (postfixArray[i]){
 					case '+':
@@ -141,7 +141,7 @@ public class Calculator{
 				}
 			}
 		}
-		return stack.pop();
+		return stack.pop();												//returns the final value left over in the stack after all calculations are done
 	}
 
 	/**
