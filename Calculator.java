@@ -7,7 +7,11 @@ public class Calculator{
 	}
 
 
-	//		!!!NEED TO CHANGE STACK OBJECT TO ONE OF LINKEDCLASS, USED RESIZARRAY AS TEST!!!
+	/**
+	 * Converts an infix expression to a postfix expression using a LinkedStack.
+	 * @param infix infix expression
+	 * @return postfix expression
+	 */
 	public static String convertToPostfix(String infix){
 		char[] infixArray = infix.toCharArray();
 		String postfix="";
@@ -66,6 +70,14 @@ public class Calculator{
 		return postfix;
 	}
 
+	/**
+	 * Returns the priority level of an operator using PEMDAS.
+	 * Does not account for difference in priority from left to right
+	 * or right to left. This is accounted already in convertToPostfix().
+	 * Higher priority level means higher precedence.
+	 * @param operator the math operator
+	 * @return priority level of the math operator
+	 */
 	public static int getPriority(Character operator){
 		int priority = -1;
 		switch (operator){
@@ -88,6 +100,12 @@ public class Calculator{
 		return priority;
 	}
 
+	/**
+	 * Calculates an answer from a postfix expression, given that it only takes in variables,
+	 * and the variables have an already specified value in convertCharToValue().
+	 * @param postfix postfix expression you want to calculate
+	 * @return the final calculation of postfix
+	 */
 	public static double evaluatePostfix(String postfix){
 		ResizeableArrayStack<Double> stack = new ResizeableArrayStack<>();
 		char[] postfixArray = postfix.toCharArray();
@@ -126,6 +144,11 @@ public class Calculator{
 		return stack.pop();
 	}
 
+	/**
+	 * Converts some variable of a-e its corresponding double value.
+	 * @param entry a variable that is from a to e only
+	 * @return the value that variable represents
+	 */
 	public static double convertCharToValue(Character entry){
 		double result=-1;
 		switch (entry){
