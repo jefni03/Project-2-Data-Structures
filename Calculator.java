@@ -9,13 +9,14 @@ public class Calculator{
 
 	/**
 	 * Converts an infix expression to a postfix expression using a LinkedStack.
+	 * Only takes in variables a-e
 	 * @param infix infix expression
 	 * @return postfix expression
 	 */
 	public static String convertToPostfix(String infix){
 		char[] infixArray = infix.toCharArray();
 		String postfix="";
-		ResizeableArrayStack<Character> stack = new ResizeableArrayStack<>();
+		LinkedStack<Character> stack = new LinkedStack<>();
 		for(int i=0; i<infixArray.length; i++){
 			if (Character.isLetter(infixArray[i])){								//if it is operand, then just add to postfix
 				postfix = postfix + infixArray[i];
@@ -101,8 +102,7 @@ public class Calculator{
 	}
 
 	/**
-	 * Calculates an answer from a postfix expression, given that it only takes in variables,
-	 * and the variables have an already specified value in convertCharToValue().
+	 * Calculates an answer from a postfix expression, given that it only takes in variables a-e,
 	 * @param postfix postfix expression you want to calculate
 	 * @return the final calculation of postfix
 	 */
