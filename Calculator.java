@@ -146,7 +146,6 @@ public class Calculator{
 				break;
 			default:
 				throw new IllegalArgumentException("cannot convert " + entry + " to a double value");
-				break;
 		}
 		return result;
 	}
