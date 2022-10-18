@@ -15,6 +15,15 @@ public class LinkedStack<T> implements StackInterface<T>
           private T data;
           private Node next;
 
+          private Node(T dataEntry){
+               this(dataEntry, null);
+          }
+
+          private Node(T dataEntry, Node nextNode){
+               data = dataEntry;
+               next = nextNode;
+          }
+
           private Node getNextNode()
           {
                return next;
