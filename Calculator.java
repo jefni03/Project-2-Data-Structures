@@ -2,7 +2,8 @@
 public class Calculator{
 
 	public static void main(String[] args) {
-		System.out.println(convertToPostfix("a * b / (c-a) + d * e"));
+		System.out.println(evaluatePostfix(convertToPostfix("a * b / (c-a) + d * e")));
+		
 	}
 
 
@@ -43,7 +44,7 @@ public class Calculator{
 						break;
 					case ')':										
 						while (!stack.isEmpty()){						//goes through stack until it is empty or until it reaches '('
-							if(stack.peek().equals('(')){			//and pops the elements
+							if(stack.peek().equals('(')){			//and pops the elements to postfix
 								break;
 							}
 							else{
@@ -53,7 +54,7 @@ public class Calculator{
 						}
 						stack.pop();									//a final pop to remove '(' from the stack
 						break;
-					default:											//skips any entries in infix that isn't an operator or an operand
+					default:											//skips any entries in infix that isn't an operator or an operand (a letter)
 						break;
 				}
 			}
@@ -87,8 +88,66 @@ public class Calculator{
 		return priority;
 	}
 
-	public static void evaluatePostfix(){
-		//use resiz array
+	public static double evaluatePostfix(String postfix){
+		ResizeableArrayStack<Double> stack = new ResizeableArrayStack<>();
+		char[] postfixArray = postfix.toCharArray();
+		for(int i=0; i<postfixArray.length; i++){
+			if(Character.isLetter(postfixArray[i])){
+				stack.push(convertCharToValue(postfixArray[i]));
+			}
+			else{
+				double rightOperand = stack.pop();
+				double leftOperand = stack.pop();
+				double result = 0;
+				switch (postfixArray[i]){
+					case '+':
+						result = leftOperand + rightOperand;
+						stack.push(result);
+						break;
+					case '-':
+						result = leftOperand - rightOperand;
+						stack.push(result);
+						break;
+					case '*':
+						result = leftOperand * rightOperand;
+						stack.push(result);
+						break;
+					case '/':
+						result = leftOperand / rightOperand;
+						stack.push(result);
+						break;
+					case '^':
+						result = Math.pow(leftOperand,rightOperand);
+						stack.push(result);
+						break;
+				}
+			}
+		}
+		return stack.pop();
+	}
+
+	public static double convertCharToValue(Character entry){
+		double result=-1;
+		switch (entry){
+			case 'a':
+				result = 2;
+				break;
+			case 'b':
+				result = 3;
+				break;
+			case 'c':
+				result = 4;
+				break;
+			case 'd':
+				result = 5;
+				break;
+			case 'e':
+				result = 6;
+				break;
+			default:
+				throw new IllegalArgumentException("cannot convert " + entry + " to a double value");
+		}
+		return result;
 	}
 
 }
