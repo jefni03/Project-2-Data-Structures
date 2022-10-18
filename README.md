@@ -29,4 +29,12 @@
 ### INSERT LINK HERE
 ###
 ###
-###
+## _JavaDocs_
+### 
+### 
+### 
+##
+## _Member Contributions_
+### Jeffrey: jefni03
+### Justin: Calculator, Testing, Code Reviewed, Managed Group Mates, Excel.
+### Peter: 2SikNinja
