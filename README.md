@@ -36,5 +36,5 @@
 ##
 ## _Member Contributions_
 ### Jeffrey: ResizeableArrayStack
-### Justin: Calculator, Testing, Code Reviewed, Managed Group Mates, Excel.
+### Justin: Calculator, Testing, Excel.
 ### Peter: LinkedStack
