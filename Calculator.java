@@ -168,7 +168,7 @@ public class Calculator{
 				result = 6;
 				break;
 			default:
-				throw new IllegalArgumentException("cannot convert " + entry + " to a double value");
+				throw new IllegalArgumentException(entry +" does not have a value assigned to it.");
 		}
 		return result;
 	}
