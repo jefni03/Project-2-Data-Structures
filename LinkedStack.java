@@ -1,45 +1,93 @@
-public class LinkedStack <T> implements StackInterface <T>
-{
+import java.util.EmptyStackException;
+import java.util.*;
 
-    /**
-	 * Adds a new entry to the top of the stack.
-	 * @param newEntry
+public class LinkedStack<T> implements StackInterface<T>
+{
+     private Node topNode;
+
+     public LinkedStack()
+     {
+          topNode = null;
+     }
+
+     private class Node
+     {
+          private T data;
+          private Node next;
+
+          private Node getNextNode()
+          {
+               return next;
+          }
+
+          private void setNextNode(Node next)
+          {
+               this.next=next;
+          }
+
+          private T getData(){
+               return data;
+           }
+
+          private void setData(T data)
+          {
+               this.data=data;
+          }
+           
+     }
+
+     /**
+	 * Adds an entry to the top of the stack array.
+	 * Checks the integrity of object and if there is space to add beforehand.
+	 * @param newEntry entry to add to top of stack
 	 */
 	public void push(T newEntry)
-    {
-
-    }
+     {
+		Node newNode = new Node(newEntry, topNode);
+          topNode = newNode;
+	}
 
 	/**
-	 * Removes an entry from the top of the stack and returns it.
-	 * @return entry from the top of stack
+	 * Removes the top entry of the stack and returns it.
+	 * @return the removed entry from stack
 	 */
 	public T pop()
-    {
+     {
+          T top = peek();
+          topNode = topNode.getNextNode();
 
-    }
+          return top;
+	}
 
 	/**
-	 * @return entry from the top of stack
+	 * @return top entry of the stack
 	 */
 	public T peek()
-    {
-
-    }
+     {
+		if(isEmpty())
+          {
+               throw new EmptyStackException();
+               
+          }
+          else
+          {
+               return topNode.getData();
+          }
+	}
 
 	/**
-	 * @return if stack is empty
+	 * @return if stack array has no entries
 	 */
 	public boolean isEmpty()
-    {
-
-    }
+     {
+		return topNode == null;
+	}
 
 	/**
-	 * Removes all entries from the stack.
+	 * Sets all indexes in stack array to null
 	 */
 	public void clear()
-    {
-
-    }
+     {
+          topNode = null;
+	}
 }
