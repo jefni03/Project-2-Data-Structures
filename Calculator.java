@@ -2,6 +2,10 @@
 public class Calculator{
 
 	public static void main(String[] args) {
+		System.out.println("Infix: a*b/(c-a)+d*e");
+		System.out.println("Postfix: " + convertToPostfix("a*b/(c-a)+d*e"));
+
+		System.out.print("Postfix evaluation: ");
 		System.out.println(evaluatePostfix(convertToPostfix("a * b / (c-a) + d * e")));
 		
 	}
@@ -100,6 +104,8 @@ public class Calculator{
 		}
 		return priority;
 	}
+
+
 
 	/**
 	 * Calculates an answer from a postfix expression, given that it only takes in variables a-e,
